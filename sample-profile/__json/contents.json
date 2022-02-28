@@ -1,0 +1,43 @@
+{
+  "title": "ContentsModel",
+  "type": "object",
+  "required": [
+    "contents"
+  ],
+  "properties": {
+    "contents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ContentModel"
+      }
+    }
+  },
+  "definitions": {
+    "ContentModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "data"
+      ],
+      "properties": {
+        "schema": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "description": "Any"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

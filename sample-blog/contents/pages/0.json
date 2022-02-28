@@ -1,0 +1,21 @@
+{
+  "$schema": "./../__json/contents.json",
+  "contents": [
+    {
+      "schema": "pages",
+      "data": {
+        "title": {
+          "iv": "About Me"
+        },
+        "text": {
+          "iv": "I love Squidex and SciFi!"
+        },
+        "slug": {
+          "iv": "about-me"
+        }
+      },
+      "id": "4b03fd70-71bb-4506-bc5e-e91f91ddd76a",
+      "status": "Published"
+    }
+  ]
+}

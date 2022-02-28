@@ -1,0 +1,21 @@
+{
+  "$schema": "./../__json/contents.json",
+  "contents": [
+    {
+      "schema": "basics",
+      "data": {
+        "firstName": {
+          "iv": "John"
+        },
+        "lastName": {
+          "iv": "Doe"
+        },
+        "profession": {
+          "iv": "Software Developer"
+        }
+      },
+      "id": "d9c20379-9d61-429f-9932-2cbb54b93e27",
+      "status": "Published"
+    }
+  ]
+}

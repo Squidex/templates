@@ -1,0 +1,21 @@
+{
+  "$schema": "./../__json/contents.json",
+  "contents": [
+    {
+      "schema": "posts",
+      "data": {
+        "title": {
+          "iv": "My first post with Squidex"
+        },
+        "text": {
+          "iv": "Just created a blog with Squidex. I love it!"
+        },
+        "slug": {
+          "iv": "my-first-post-with-squidex"
+        }
+      },
+      "id": "a009d959-145a-49c4-8061-7d6e56b38cf7",
+      "status": "Published"
+    }
+  ]
+}
