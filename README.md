@@ -18,6 +18,7 @@ Just click one of the following links to navigate to the templates and to get in
 
 * [Starter Sample Blog](sample-blog/README.md): Create a simple blog with samples for ASP.NET Core, React, Angular and VueJS.
 * [Starter Sample Profile](sample-profile/README.md): Create a simple profile page with a sample for ASP.NET Core.
+* [Starter Sample Hotels](sample-hotels/README.md): Create a simple list with hotels and embedded contents with sample for React.
 
 ## How to create a new template?
 

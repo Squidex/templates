@@ -1,0 +1,23 @@
+{
+  "$schema": "./../__json/contents.json",
+  "contents": [
+    {
+      "schema": "posts",
+      "data": {
+        "title": {
+          "iv": "New Hotel Offerings"
+        },
+        "text": {
+          "iv": "We have new hotels in our offering:\n\n[Ibis Wembley ](https://sample.com/api/content/hotels/hotels/c65b545e-f9e2-4496-a981-1335b7eec5aa')[Jianguo Hotel Qianmen](https://sample.com/api/content/hotels/hotels/7aaee525-a215-4c81-89a1-0e157e5c3462')\n\nJust check them out."
+        },
+        "slug": {
+          "iv": "new-hotel-offerings"
+        }
+      },
+      "id": "f2683ab7-765a-40e6-bce6-5a46df5636d0",
+      "status": "Published"
+    }
+  ],
+  "sourceApp": "hotels",
+  "sourceUrl": "https://sample.com/"
+}

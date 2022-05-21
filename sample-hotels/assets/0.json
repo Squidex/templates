@@ -1,0 +1,145 @@
+{
+  "$schema": "./../__json/assets.json",
+  "assets": [
+    {
+      "id": "470b0a97-ed3e-42d3-8ea3-c385cebe9616",
+      "mimeType": "image/jpeg",
+      "fileName": "toa-heftiba-FV3GConVSss-unsplash.jpg",
+      "fileHash": "l8yUX5A1XgUs9KPPB9NYjyke/YGLdQT3avaINN6sRMw=",
+      "folderPath": "",
+      "slug": "toa-heftiba-fv3gconvsss-unsplash.jpg",
+      "tags": [
+        "type/jpg",
+        "image",
+        "image/large"
+      ],
+      "metadata": {
+        "pixelWidth": 3762,
+        "pixelHeight": 2508,
+        "imageQuality": 89,
+        "description": "JFIF File"
+      },
+      "isProtected": false
+    },
+    {
+      "id": "b9407103-2516-4e9b-8b8b-601e77867600",
+      "mimeType": "image/jpeg",
+      "fileName": "clifford-fD5YvKzqFEg-unsplash.jpg",
+      "fileHash": "OMpdjSpbz5NFNwDnyt4t+fglPvJrbtMbfhxny8v7ztw=",
+      "folderPath": "",
+      "slug": "clifford-fd5yvkzqfeg-unsplash.jpg",
+      "tags": [
+        "type/jpg",
+        "image",
+        "image/large"
+      ],
+      "metadata": {
+        "pixelWidth": 2758,
+        "pixelHeight": 4152,
+        "imageQuality": 89,
+        "description": "JFIF File"
+      },
+      "isProtected": false
+    },
+    {
+      "id": "c9e78e82-a139-4786-b7d0-8404ec16a4cd",
+      "mimeType": "image/jpeg",
+      "fileName": "manuel-moreno-DGa0LQ0yDPc-unsplash.jpg",
+      "fileHash": "tgOlfwJdUkS68wdWF6NpSgY9iIqXUUUcU/7RVaP/Q3I=",
+      "folderPath": "",
+      "slug": "manuel-moreno-dga0lq0ydpc-unsplash.jpg",
+      "tags": [
+        "type/jpg",
+        "image",
+        "image/large"
+      ],
+      "metadata": {
+        "pixelWidth": 4288,
+        "pixelHeight": 2848,
+        "imageQuality": 89,
+        "description": "JFIF File"
+      },
+      "isProtected": false
+    },
+    {
+      "id": "1ce3dfc8-2c05-41c7-a006-219396ea85cf",
+      "mimeType": "image/jpeg",
+      "fileName": "artur-lysyuk-xE2GCXZ3a-4-unsplash.jpg",
+      "fileHash": "zkM5F9Dy0h9HJXU45KYh1EbaZ3KUFT0bg40DEIHUbOA=",
+      "folderPath": "",
+      "slug": "artur-lysyuk-xe2gcxz3a-4-unsplash.jpg",
+      "tags": [
+        "type/jpg",
+        "image",
+        "image/large"
+      ],
+      "metadata": {
+        "pixelWidth": 4032,
+        "pixelHeight": 2303,
+        "imageQuality": 89,
+        "description": "JFIF File"
+      },
+      "isProtected": false
+    },
+    {
+      "id": "d56adefb-7270-4ece-ad23-cac60b6e643d",
+      "mimeType": "image/jpeg",
+      "fileName": "li-yang-a8iCZvtrHpQ-unsplash.jpg",
+      "fileHash": "Zyl3vOnSVRbC7i2DSZpBVgdvrkcDE+Me47OGr956Ws0=",
+      "folderPath": "",
+      "slug": "li-yang-a8iczvtrhpq-unsplash.jpg",
+      "tags": [
+        "type/jpg",
+        "image",
+        "image/large"
+      ],
+      "metadata": {
+        "pixelWidth": 4928,
+        "pixelHeight": 3264,
+        "imageQuality": 89,
+        "description": "JFIF File"
+      },
+      "isProtected": false
+    },
+    {
+      "id": "d6636734-d7b6-493a-b300-c05c3cb96b13",
+      "mimeType": "image/jpeg",
+      "fileName": "road-trip-with-raj-NxHROuJcKNA-unsplash.jpg",
+      "fileHash": "UIP0K2+HKL9TFSxOXjqNonDUDwOmHD3Pe470EMveqnE=",
+      "folderPath": "",
+      "slug": "road-trip-with-raj-nxhroujckna-unsplash.jpg",
+      "tags": [
+        "type/jpg",
+        "image",
+        "image/large"
+      ],
+      "metadata": {
+        "pixelWidth": 2370,
+        "pixelHeight": 2963,
+        "imageQuality": 89,
+        "description": "JFIF File"
+      },
+      "isProtected": false
+    },
+    {
+      "id": "f7593c5a-9e99-4a85-b334-30ddfe737c2d",
+      "mimeType": "image/jpeg",
+      "fileName": "boxed-water-is-better-X5UrOwSCYYI-unsplash.jpg",
+      "fileHash": "pJcdPuPA63et0dQuFVMEbfeiDsOEmZEDiinra7ldrB4=",
+      "folderPath": "",
+      "slug": "boxed-water-is-better-x5urowscyyi-unsplash.jpg",
+      "tags": [
+        "type/jpg",
+        "image",
+        "image/large"
+      ],
+      "metadata": {
+        "pixelWidth": 3183,
+        "pixelHeight": 2250,
+        "imageQuality": 89,
+        "description": "JFIF File"
+      },
+      "isProtected": false
+    }
+  ]
+}

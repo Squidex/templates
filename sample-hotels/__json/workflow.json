@@ -1,0 +1,112 @@
+{
+  "title": "UpdateWorkflowDto",
+  "type": "object",
+  "required": [
+    "steps",
+    "initial"
+  ],
+  "properties": {
+    "name": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "description": "The name of the workflow."
+    },
+    "steps": {
+      "type": "object",
+      "description": "The workflow steps.",
+      "additionalProperties": {
+        "$ref": "#/definitions/WorkflowStepDto"
+      }
+    },
+    "schemaIds": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "The schema ids.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "initial": {
+      "type": "string",
+      "description": "The initial step.",
+      "minLength": 1
+    }
+  },
+  "definitions": {
+    "WorkflowStepDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transitions"
+      ],
+      "properties": {
+        "transitions": {
+          "type": "object",
+          "description": "The transitions.",
+          "additionalProperties": {
+            "$ref": "#/definitions/WorkflowTransitionDto"
+          }
+        },
+        "color": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The optional color."
+        },
+        "validate": {
+          "type": "boolean",
+          "description": "True if the content should be validated when moving to this step."
+        },
+        "noUpdate": {
+          "type": "boolean",
+          "description": "Indicates if updates should not be allowed."
+        },
+        "noUpdateExpression": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional expression that must evaluate to true when you want to prevent updates."
+        },
+        "noUpdateRoles": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Optional list of roles to restrict the updates for users with these roles.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "WorkflowTransitionDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expression": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The optional expression."
+        },
+        "roles": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The optional restricted role.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
