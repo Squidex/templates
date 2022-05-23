@@ -1,12 +1,12 @@
 # Export 5/21/2022 2:32:06 PM
 
---- Describe your export here ---
-
 This sample demonstrates how to embed contents in markdown.
 
 Source code for this sample is available under: 
 
 * [React](https://github.com/Squidex/squidex-samples/tree/master/jscript/react/sample-hotels)
+
+Usage
 
 ```
 // Add a config to your app.
