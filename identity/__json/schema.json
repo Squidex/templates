@@ -1,0 +1,2169 @@
+{
+  "title": "SchemaModel",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "isSingleton": {
+      "type": "boolean"
+    },
+    "schemaType": {
+      "$ref": "#/definitions/SchemaType"
+    },
+    "schema": {
+      "$ref": "#/definitions/SynchronizeSchemaDto"
+    }
+  },
+  "definitions": {
+    "SchemaType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Default",
+        "Singleton",
+        "Component"
+      ],
+      "enum": [
+        "Default",
+        "Singleton",
+        "Component"
+      ]
+    },
+    "SynchronizeSchemaDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "properties": {
+          "description": "The optional properties.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SchemaPropertiesDto"
+            }
+          ]
+        },
+        "scripts": {
+          "description": "The optional scripts.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/SchemaScriptsDto"
+            }
+          ]
+        },
+        "fieldsInReferences": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The names of the fields that should be used in references.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldsInLists": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The names of the fields that should be shown in lists, including meta fields.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fields": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Optional fields.",
+          "items": {
+            "$ref": "#/definitions/UpsertSchemaFieldDto"
+          }
+        },
+        "previewUrls": {
+          "type": [
+            "null",
+            "object"
+          ],
+          "description": "The optional preview urls.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "fieldRules": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The optional field Rules.",
+          "items": {
+            "$ref": "#/definitions/FieldRuleDto"
+          }
+        },
+        "category": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The category."
+        },
+        "isPublished": {
+          "type": "boolean",
+          "description": "Set it to true to autopublish the schema."
+        },
+        "noFieldDeletion": {
+          "type": "boolean",
+          "description": "True, when fields should not be deleted."
+        },
+        "noFieldRecreation": {
+          "type": "boolean",
+          "description": "True, when fields with different types should not be recreated."
+        }
+      }
+    },
+    "SchemaPropertiesDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the schema.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "contentsSidebarUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The url to a the sidebar plugin for content lists."
+        },
+        "contentSidebarUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The url to a the sidebar plugin for content items."
+        },
+        "contentEditorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The url to the editor plugin."
+        },
+        "validateOnPublish": {
+          "type": "boolean",
+          "description": "True to validate the content items on publish."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "SchemaScriptsDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "query": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The script that is executed for each content when querying contents."
+        },
+        "queryPre": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The script that is executed for all contents when querying contents."
+        },
+        "create": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The script that is executed when creating a content."
+        },
+        "update": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The script that is executed when updating a content."
+        },
+        "delete": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The script that is executed when deleting a content."
+        },
+        "change": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The script that is executed when change a content status."
+        }
+      }
+    },
+    "UpsertSchemaFieldDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "properties"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the field. Must be unique within the schema.",
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)*$"
+        },
+        "isHidden": {
+          "type": "boolean",
+          "description": "Defines if the field is hidden."
+        },
+        "isLocked": {
+          "type": "boolean",
+          "description": "Defines if the field is locked."
+        },
+        "isDisabled": {
+          "type": "boolean",
+          "description": "Defines if the field is disabled."
+        },
+        "partitioning": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Determines the optional partitioning of the field."
+        },
+        "properties": {
+          "description": "The field properties.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/FieldPropertiesDto"
+            }
+          ]
+        },
+        "nested": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The nested fields.",
+          "items": {
+            "$ref": "#/definitions/UpsertSchemaNestedFieldDto"
+          }
+        }
+      }
+    },
+    "FieldPropertiesDto": {
+      "type": "object",
+      "x-abstract": true,
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "ArrayFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "minItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum allowed items for the field value.",
+          "format": "int32"
+        },
+        "maxItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum allowed items for the field value.",
+          "format": "int32"
+        },
+        "uniqueFields": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The fields that must be unique.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetsFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "previewMode": {
+          "description": "The preview mode for the asset.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/AssetPreviewMode"
+            }
+          ]
+        },
+        "defaultValues": {
+          "description": "The language specific default value as a list of asset ids.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LocalizedValueOfReadonlyListOfString"
+            }
+          ]
+        },
+        "defaultValue": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The default value as a list of asset ids.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "folderId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The initial id to the folder."
+        },
+        "minItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum allowed items for the field value.",
+          "format": "int32"
+        },
+        "maxItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum allowed items for the field value.",
+          "format": "int32"
+        },
+        "minSize": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum file size in bytes.",
+          "format": "int32"
+        },
+        "maxSize": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum file size in bytes.",
+          "format": "int32"
+        },
+        "minWidth": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum image width in pixels.",
+          "format": "int32"
+        },
+        "maxWidth": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum image width in pixels.",
+          "format": "int32"
+        },
+        "minHeight": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum image height in pixels.",
+          "format": "int32"
+        },
+        "maxHeight": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum image height in pixels.",
+          "format": "int32"
+        },
+        "aspectWidth": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The image aspect width in pixels.",
+          "format": "int32"
+        },
+        "aspectHeight": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The image aspect height in pixels.",
+          "format": "int32"
+        },
+        "expectedType": {
+          "description": "The expected type.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/AssetType"
+            }
+          ]
+        },
+        "resolveFirst": {
+          "type": "boolean",
+          "description": "True to resolve first asset in the content list."
+        },
+        "mustBeImage": {
+          "type": "boolean",
+          "description": "True to resolve first image in the content list.",
+          "x-deprecated": true,
+          "x-deprecatedMessage": "Use 'expectedType' field now"
+        },
+        "resolveImage": {
+          "type": "boolean",
+          "description": "True to resolve first image in the content list.",
+          "x-deprecated": true,
+          "x-deprecatedMessage": "Use 'resolveFirst' field now"
+        },
+        "allowedExtensions": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The allowed file extensions.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowDuplicates": {
+          "type": "boolean",
+          "description": "True, if duplicate values are allowed."
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "AssetPreviewMode": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "ImageAndFileName",
+        "Image",
+        "FileName"
+      ],
+      "enum": [
+        "ImageAndFileName",
+        "Image",
+        "FileName"
+      ]
+    },
+    "LocalizedValueOfReadonlyListOfString": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "AssetType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Unknown",
+        "Image",
+        "Audio",
+        "Video"
+      ],
+      "enum": [
+        "Unknown",
+        "Image",
+        "Audio",
+        "Video"
+      ]
+    },
+    "BooleanFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultValues": {
+          "description": "The language specific default value for the field value.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LocalizedValueOfNullableBoolean"
+            }
+          ]
+        },
+        "defaultValue": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "The default value for the field value."
+        },
+        "inlineEditable": {
+          "type": "boolean",
+          "description": "Indicates that the inline editor is enabled for this field."
+        },
+        "editor": {
+          "description": "The editor that is used to manage this field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/BooleanFieldEditor"
+            }
+          ]
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "LocalizedValueOfNullableBoolean": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "BooleanFieldEditor": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Checkbox",
+        "Toggle"
+      ],
+      "enum": [
+        "Checkbox",
+        "Toggle"
+      ]
+    },
+    "ComponentFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schemaIds": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The ID of the embedded schemas.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "ComponentsFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "minItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum allowed items for the field value.",
+          "format": "int32"
+        },
+        "maxItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum allowed items for the field value.",
+          "format": "int32"
+        },
+        "schemaIds": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The ID of the embedded schemas.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "uniqueFields": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The fields that must be unique.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "DateTimeFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultValues": {
+          "description": "The language specific default value for the field value.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LocalizedValueOfNullableInstant"
+            }
+          ]
+        },
+        "defaultValue": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The default value for the field value.",
+          "format": "date-time"
+        },
+        "maxValue": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The maximum allowed value for the field value.",
+          "format": "date-time"
+        },
+        "minValue": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The minimum allowed value for the field value.",
+          "format": "date-time"
+        },
+        "format": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The format pattern when displayed in the UI."
+        },
+        "editor": {
+          "description": "The editor that is used to manage this field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/DateTimeFieldEditor"
+            }
+          ]
+        },
+        "calculatedDefaultValue": {
+          "description": "The calculated default value for the field value.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/DateTimeCalculatedDefaultValue"
+            }
+          ]
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "LocalizedValueOfNullableInstant": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "DateTimeFieldEditor": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Date",
+        "DateTime"
+      ],
+      "enum": [
+        "Date",
+        "DateTime"
+      ]
+    },
+    "DateTimeCalculatedDefaultValue": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Now",
+        "Today"
+      ],
+      "enum": [
+        "Now",
+        "Today"
+      ]
+    },
+    "GeolocationFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "editor": {
+          "description": "The editor that is used to manage this field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/GeolocationFieldEditor"
+            }
+          ]
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "GeolocationFieldEditor": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Map"
+      ],
+      "enum": [
+        "Map"
+      ]
+    },
+    "JsonFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "NumberFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultValues": {
+          "description": "The language specific default value for the field value.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LocalizedValueOfNullableDouble"
+            }
+          ]
+        },
+        "defaultValue": {
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "The default value for the field value.",
+          "format": "double"
+        },
+        "maxValue": {
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "The maximum allowed value for the field value.",
+          "format": "double"
+        },
+        "minValue": {
+          "type": [
+            "null",
+            "number"
+          ],
+          "description": "The minimum allowed value for the field value.",
+          "format": "double"
+        },
+        "allowedValues": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The allowed values for the field value.",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "isUnique": {
+          "type": "boolean",
+          "description": "Indicates if the field value must be unique. Ignored for nested fields and localized fields."
+        },
+        "inlineEditable": {
+          "type": "boolean",
+          "description": "Indicates that the inline editor is enabled for this field."
+        },
+        "editor": {
+          "description": "The editor that is used to manage this field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/NumberFieldEditor"
+            }
+          ]
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "LocalizedValueOfNullableDouble": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "NumberFieldEditor": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Input",
+        "Radio",
+        "Dropdown",
+        "Stars"
+      ],
+      "enum": [
+        "Input",
+        "Radio",
+        "Dropdown",
+        "Stars"
+      ]
+    },
+    "ReferencesFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultValues": {
+          "description": "The language specific default value as a list of content ids.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LocalizedValueOfReadonlyListOfString"
+            }
+          ]
+        },
+        "defaultValue": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The default value as a list of content ids.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "minItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum allowed items for the field value.",
+          "format": "int32"
+        },
+        "maxItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum allowed items for the field value.",
+          "format": "int32"
+        },
+        "allowDuplicates": {
+          "type": "boolean",
+          "description": "True, if duplicate values are allowed."
+        },
+        "resolveReference": {
+          "type": "boolean",
+          "description": "True to resolve references in the content list."
+        },
+        "mustBePublished": {
+          "type": "boolean",
+          "description": "True when all references must be published."
+        },
+        "editor": {
+          "description": "The editor that is used to manage this field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/ReferencesFieldEditor"
+            }
+          ]
+        },
+        "schemaIds": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The ID of the referenced schemas.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "ReferencesFieldEditor": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "List",
+        "Dropdown",
+        "Tags",
+        "Checkboxes",
+        "Input"
+      ],
+      "enum": [
+        "List",
+        "Dropdown",
+        "Tags",
+        "Checkboxes",
+        "Input"
+      ]
+    },
+    "StringFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultValues": {
+          "description": "The language specific default value for the field value.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LocalizedValueOfString"
+            }
+          ]
+        },
+        "defaultValue": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The default value for the field value."
+        },
+        "pattern": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The pattern to enforce a specific format for the field value."
+        },
+        "patternMessage": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The validation message for the pattern."
+        },
+        "folderId": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The initial id to the folder when the control supports file uploads."
+        },
+        "minLength": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum allowed length for the field value.",
+          "format": "int32"
+        },
+        "maxLength": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum allowed length for the field value.",
+          "format": "int32"
+        },
+        "minCharacters": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum allowed of normal characters for the field value.",
+          "format": "int32"
+        },
+        "maxCharacters": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum allowed of normal characters for the field value.",
+          "format": "int32"
+        },
+        "minWords": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum allowed number of words for the field value.",
+          "format": "int32"
+        },
+        "maxWords": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum allowed number of words for the field value.",
+          "format": "int32"
+        },
+        "allowedValues": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The allowed values for the field value.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "schemaIds": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The allowed schema ids that can be embedded.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isUnique": {
+          "type": "boolean",
+          "description": "Indicates if the field value must be unique. Ignored for nested fields and localized fields."
+        },
+        "isEmbeddable": {
+          "type": "boolean",
+          "description": "Indicates that other content items or references are embedded."
+        },
+        "inlineEditable": {
+          "type": "boolean",
+          "description": "Indicates that the inline editor is enabled for this field."
+        },
+        "createEnum": {
+          "type": "boolean",
+          "description": "Indicates whether GraphQL Enum should be created."
+        },
+        "contentType": {
+          "description": "How the string content should be interpreted.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/StringContentType"
+            }
+          ]
+        },
+        "editor": {
+          "description": "The editor that is used to manage this field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/StringFieldEditor"
+            }
+          ]
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "LocalizedValueOfString": {
+      "type": "object",
+      "additionalProperties": false
+    },
+    "StringContentType": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Unspecified",
+        "Html",
+        "Markdown"
+      ],
+      "enum": [
+        "Unspecified",
+        "Html",
+        "Markdown"
+      ]
+    },
+    "StringFieldEditor": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Input",
+        "Color",
+        "Markdown",
+        "Dropdown",
+        "Html",
+        "Radio",
+        "RichText",
+        "Slug",
+        "StockPhoto",
+        "TextArea"
+      ],
+      "enum": [
+        "Input",
+        "Color",
+        "Markdown",
+        "Dropdown",
+        "Html",
+        "Radio",
+        "RichText",
+        "Slug",
+        "StockPhoto",
+        "TextArea"
+      ]
+    },
+    "TagsFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultValues": {
+          "description": "The language specific default value for the field value.",
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/definitions/LocalizedValueOfReadonlyListOfString"
+            }
+          ]
+        },
+        "defaultValue": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The default value.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "minItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The minimum allowed items for the field value.",
+          "format": "int32"
+        },
+        "maxItems": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "description": "The maximum allowed items for the field value.",
+          "format": "int32"
+        },
+        "allowedValues": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "The allowed values for the field value.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createEnum": {
+          "type": "boolean",
+          "description": "Indicates whether GraphQL Enum should be created."
+        },
+        "editor": {
+          "description": "The editor that is used to manage this field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/TagsFieldEditor"
+            }
+          ]
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "TagsFieldEditor": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Tags",
+        "Checkboxes",
+        "Dropdown"
+      ],
+      "enum": [
+        "Tags",
+        "Checkboxes",
+        "Dropdown"
+      ]
+    },
+    "UIFieldPropertiesDto": {
+      "type": "object",
+      "required": [
+        "fieldType"
+      ],
+      "properties": {
+        "label": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional label for the editor.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "hints": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Hints to describe the field.",
+          "maxLength": 1000,
+          "minLength": 0
+        },
+        "placeholder": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Placeholder to show when no value has been entered.",
+          "maxLength": 100,
+          "minLength": 0
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Indicates if the field is required."
+        },
+        "isRequiredOnPublish": {
+          "type": "boolean",
+          "description": "Indicates if the field is required when publishing."
+        },
+        "isHalfWidth": {
+          "type": "boolean",
+          "description": "Indicates if the field should be rendered with half width only."
+        },
+        "editorUrl": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "Optional url to the editor."
+        },
+        "tags": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Tags for automation processes.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "editor": {
+          "description": "The editor that is used to manage this field.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/UIFieldEditor"
+            }
+          ]
+        },
+        "fieldType": {
+          "type": "string"
+        }
+      }
+    },
+    "UIFieldEditor": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Separator"
+      ],
+      "enum": [
+        "Separator"
+      ]
+    },
+    "UpsertSchemaNestedFieldDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "properties"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the field. Must be unique within the schema.",
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)*$"
+        },
+        "isHidden": {
+          "type": "boolean",
+          "description": "Defines if the field is hidden."
+        },
+        "isLocked": {
+          "type": "boolean",
+          "description": "Defines if the field is locked."
+        },
+        "isDisabled": {
+          "type": "boolean",
+          "description": "Defines if the field is disabled."
+        },
+        "properties": {
+          "description": "The field properties.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/FieldPropertiesDto"
+            }
+          ]
+        }
+      }
+    },
+    "FieldRuleDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "field"
+      ],
+      "properties": {
+        "action": {
+          "description": "The action to perform when the condition is met.",
+          "oneOf": [
+            {
+              "$ref": "#/definitions/FieldRuleAction"
+            }
+          ]
+        },
+        "field": {
+          "type": "string",
+          "description": "The field to update.",
+          "minLength": 1
+        },
+        "condition": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The condition."
+        }
+      }
+    },
+    "FieldRuleAction": {
+      "type": "string",
+      "description": "",
+      "x-enumNames": [
+        "Disable",
+        "Hide",
+        "Require"
+      ],
+      "enum": [
+        "Disable",
+        "Hide",
+        "Require"
+      ]
+    }
+  }
+}
