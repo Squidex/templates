@@ -1,0 +1,20 @@
+{
+  "$schema": "./../__json/contents.json",
+  "contents": [
+    {
+      "schema": "destination",
+      "data": {
+        "name": {
+          "iv": "Europe"
+        },
+        "description": {
+          "iv": "Europe is great"
+        }
+      },
+      "id": "c180a08d-0f57-43bf-8a2c-dda12c187780",
+      "status": "Draft"
+    }
+  ],
+  "sourceApp": "hotels",
+  "sourceUrl": "https://localhost:5001/"
+}

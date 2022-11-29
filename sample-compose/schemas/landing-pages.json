@@ -1,0 +1,104 @@
+{
+  "$schema": "./../__json/schema.json",
+  "schema": {
+    "noFieldDeletion": false,
+    "noFieldRecreation": false,
+    "properties": {
+      "label": "Landing Pages",
+      "validateOnPublish": false
+    },
+    "scripts": {
+      "create": "ctx.data.references.iv = ctx.data.content.iv.contentIds;\nreplace()",
+      "update": "ctx.data.references.iv = ctx.data.content.iv.contentIds;\nreplace()"
+    },
+    "fieldsInReferences": [],
+    "fieldsInLists": [],
+    "fields": [
+      {
+        "name": "slug",
+        "isHidden": false,
+        "isLocked": false,
+        "isDisabled": false,
+        "partitioning": "invariant",
+        "properties": {
+          "fieldType": "String",
+          "isUnique": false,
+          "isEmbeddable": false,
+          "inlineEditable": false,
+          "createEnum": false,
+          "contentType": "Unspecified",
+          "editor": "Slug",
+          "label": "Slug",
+          "isRequired": false,
+          "isRequiredOnPublish": false,
+          "isHalfWidth": false
+        }
+      },
+      {
+        "name": "title",
+        "isHidden": false,
+        "isLocked": false,
+        "isDisabled": false,
+        "partitioning": "invariant",
+        "properties": {
+          "fieldType": "String",
+          "isUnique": false,
+          "isEmbeddable": false,
+          "inlineEditable": false,
+          "createEnum": false,
+          "contentType": "Unspecified",
+          "editor": "Input",
+          "label": "Title",
+          "isRequired": false,
+          "isRequiredOnPublish": false,
+          "isHalfWidth": false
+        }
+      },
+      {
+        "name": "content",
+        "isHidden": false,
+        "isLocked": false,
+        "isDisabled": false,
+        "partitioning": "invariant",
+        "properties": {
+          "fieldType": "Json",
+          "label": "Content",
+          "isRequired": false,
+          "isRequiredOnPublish": false,
+          "isHalfWidth": false,
+          "editorUrl": "http://localhost:3001/editor"
+        }
+      },
+      {
+        "name": "references",
+        "isHidden": false,
+        "isLocked": false,
+        "isDisabled": false,
+        "partitioning": "invariant",
+        "properties": {
+          "fieldType": "References",
+          "allowDuplicates": false,
+          "resolveReference": false,
+          "mustBePublished": false,
+          "editor": "List",
+          "label": "References",
+          "isRequired": false,
+          "isRequiredOnPublish": false,
+          "isHalfWidth": false
+        }
+      }
+    ],
+    "previewUrls": {},
+    "fieldRules": [
+      {
+        "action": "Hide",
+        "field": "references",
+        "condition": "true"
+      }
+    ],
+    "isPublished": true
+  },
+  "name": "landing-pages",
+  "isSingleton": false,
+  "schemaType": "Default"
+}

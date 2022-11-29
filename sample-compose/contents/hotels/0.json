@@ -1,0 +1,60 @@
+{
+  "$schema": "./../__json/contents.json",
+  "contents": [
+    {
+      "schema": "hotels",
+      "data": {
+        "name": {
+          "iv": "Jianguo Hotel Qianmen"
+        },
+        "description": {
+          "iv": "The Jianguo Hotel Qianmen is located near Tiantan Park, just a 10-minute walk from the National Center for the Performing Arts and Tian'anmen Square. Built in 1956 it has old school charm and many rooms still feature high, crown-molded ceilings. A 2012 renovation brought all rooms and services up to modern day scratch and guestrooms come equipped with free Wi-Fi and all the usual amenities required for a comfortable stay."
+        },
+        "rooms": {
+          "iv": 120
+        },
+        "minPrice": {
+          "iv": 99
+        },
+        "photos": {
+          "iv": [
+            "d6636734-d7b6-493a-b300-c05c3cb96b13",
+            "d56adefb-7270-4ece-ad23-cac60b6e643d",
+            "1ce3dfc8-2c05-41c7-a006-219396ea85cf",
+            "f7593c5a-9e99-4a85-b334-30ddfe737c2d"
+          ]
+        }
+      },
+      "id": "7aaee525-a215-4c81-89a1-0e157e5c3462",
+      "status": "Published"
+    },
+    {
+      "schema": "hotels",
+      "data": {
+        "name": {
+          "iv": "Ibis Wembley "
+        },
+        "description": {
+          "iv": "Ibis London Wembley hotel is in close proximity to Wembley Stadium and Wembley Arena, both just a few minutes’ walk from the hotel. Each of the 210 modern guest rooms have wireless internet and satellite TV. The hotel has excellent local transport connections into central London."
+        },
+        "rooms": {
+          "iv": 1400
+        },
+        "minPrice": {
+          "iv": 59
+        },
+        "photos": {
+          "iv": [
+            "b9407103-2516-4e9b-8b8b-601e77867600",
+            "c9e78e82-a139-4786-b7d0-8404ec16a4cd",
+            "470b0a97-ed3e-42d3-8ea3-c385cebe9616"
+          ]
+        }
+      },
+      "id": "c65b545e-f9e2-4496-a981-1335b7eec5aa",
+      "status": "Published"
+    }
+  ],
+  "sourceApp": "hotels",
+  "sourceUrl": "https://localhost:5001/"
+}
