@@ -1,5 +1,7 @@
 # Export 5/21/2022 2:32:06 PM
 
+![Logo](../_images/add-template.svg "Logo")
+
 This sample demonstrates how to embed contents in markdown.
 
 Source code for this sample is available under: 
