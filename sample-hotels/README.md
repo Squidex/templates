@@ -1,7 +1,5 @@
 # Export 5/21/2022 2:32:06 PM
 
-![Logo](../_images/add-template.svg "Logo")
-
 This sample demonstrates how to embed contents in markdown.
 
 Source code for this sample is available under: 
@@ -75,3 +73,4 @@ sq sync in <PATH_TO_THIS_FOLDER
 
 0 workflow(s).
 
+Logo: [Logo](../_images/add-template.svg)

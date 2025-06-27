@@ -58,3 +58,5 @@ sq sync in https://github.com/Squidex/templates.git/?folder=sample-profile
 
 0 workflow(s).
 
+Logo: [Logo](../_images/add-profile.svg)
+

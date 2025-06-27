@@ -62,3 +62,5 @@ sq sync in <PATH_TO_THIS_FOLDER
 
 0 workflow(s).
 
+Logo: [Logo](../_images/add-template.svg)
+

@@ -60,3 +60,5 @@ sq sync in https://github.com/Squidex/templates.git/?folder=sample-blog
 
 0 workflow(s).
 
+Logo: [Logo](../_images/add-blog.svg)
+
